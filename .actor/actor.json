@@ -1,0 +1,27 @@
+{
+  "$schema": "https://apify.com/schemas/v1/actor.ide.json",
+  "actorSpecification": 1,
+  "name": "saas-changelog-status-watcher",
+  "title": "SaaS Changelog & Status Page Watcher",
+  "description": "Watch vendor changelog and status pages and get structured diffs when new releases, incidents or maintenance windows appear. Keeps state between runs and can POST to Slack, Discord, Zapier, Make or n8n.",
+  "version": "0.1",
+  "buildTag": "latest",
+  "meta": {
+    "templateId": "python-playwright",
+    "generatedBy": "Grok Bot"
+  },
+  "defaultMemoryMbytes": 512,
+  "minMemoryMbytes": 512,
+  "maxMemoryMbytes": 4096,
+  "defaultRunOptions": {
+    "build": "latest",
+    "memoryMbytes": 512,
+    "timeoutSecs": 1800
+  },
+  "storages": {
+    "dataset": "./dataset_schema.json"
+  },
+  "dockerfile": "../Dockerfile",
+  "inputSchema": "./input_schema.json",
+  "outputSchema": "./output_schema.json"
+}

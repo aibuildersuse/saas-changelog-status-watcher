@@ -1,0 +1,53 @@
+{
+  "$schema": "https://apify.com/schemas/v1/dataset.ide.json",
+  "actorSpecification": 1,
+  "fields": {
+    "type": "object",
+    "properties": {
+      "url": { "type": "string" },
+      "label": { "type": ["string", "null"] },
+      "selector": { "type": ["string", "null"] },
+      "pageKind": { "type": ["string", "null"] },
+      "changeType": {
+        "type": "string",
+        "enum": ["baseline", "no_change", "event_added", "event_removed", "event_updated", "page_text_changed", "selector_not_found", "fetch_error", "events_not_found"]
+      },
+      "eventTitle": { "type": ["string", "null"] },
+      "eventDate": { "type": ["string", "null"] },
+      "eventKind": { "type": ["string", "null"] },
+      "eventSummary": { "type": ["string", "null"] },
+      "addedText": { "type": "array", "items": { "type": "string" } },
+      "removedText": { "type": "array", "items": { "type": "string" } },
+      "summary": { "type": "string" },
+      "pageTitle": { "type": ["string", "null"] },
+      "fetchMethod": { "type": ["string", "null"] },
+      "eventsDetected": { "type": ["integer", "null"] },
+      "checkedAt": { "type": "string" },
+      "previousCheckedAt": { "type": ["string", "null"] },
+      "snapshotKey": { "type": ["string", "null"] },
+      "error": { "type": ["string", "null"] }
+    },
+    "required": ["url", "changeType", "summary", "checkedAt"]
+  },
+  "views": {
+    "changes": {
+      "title": "Changes",
+      "transformation": {
+        "fields": ["changeType", "url", "eventTitle", "eventDate", "eventKind", "summary", "checkedAt", "previousCheckedAt"]
+      },
+      "display": {
+        "component": "table",
+        "properties": {
+          "changeType": { "label": "Change", "format": "text" },
+          "url": { "label": "Page", "format": "link" },
+          "eventTitle": { "label": "Event", "format": "text" },
+          "eventDate": { "label": "Date", "format": "text" },
+          "eventKind": { "label": "Kind", "format": "text" },
+          "summary": { "label": "Summary", "format": "text" },
+          "checkedAt": { "label": "Checked at", "format": "date" },
+          "previousCheckedAt": { "label": "Compared with", "format": "date" }
+        }
+      }
+    }
+  }
+}
